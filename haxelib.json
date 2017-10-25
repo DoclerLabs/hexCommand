@@ -1,0 +1,15 @@
+{
+  "name": "hexcommand",
+  "license": "MIT",
+  "classPath": "src",
+  "tags": ["hexmachina", "controller", "command", "macro"],
+  "description": "Fast and lightweight controller architecture based on command pattern without event system",
+  "contributors": ["doclerlabs"],
+  "releasenote": "First release.",
+  "version": "git",
+  "url": "https://github.com/DoclerLabs/hexCommand",
+  "dependencies": 
+  {
+	"hexinject": "git:https://github.com/DoclerLabs/hexInject.git"
+  }
+}

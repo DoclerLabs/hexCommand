@@ -199,7 +199,7 @@ class ContextModule implements IContextModule
 	/**
 	 * 
 	 */
-	macro public function _getDependency<T>( ethis : Expr, clazz : ExprOf<Dependency<T>>, ?id : ExprOf<String> ) : ExprOf<T>
+	macro public function _getDependency<T>( ethis, clazz : ExprOf<Dependency<T>>, ?id : ExprOf<String> ) : ExprOf<T>
 	{
 		var classRepresentation = InjectorUtil._getStringClassRepresentation( clazz );
 		var classReference = InjectorUtil._getClassReference( clazz );

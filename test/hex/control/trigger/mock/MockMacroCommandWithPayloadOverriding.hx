@@ -1,5 +1,6 @@
 package hex.control.trigger.mock;
 
+import hex.control.MockEnum;
 import hex.control.async.Nothing;
 import hex.control.payload.ExecutionPayload;
 import hex.control.trigger.MacroCommand;
@@ -39,6 +40,9 @@ class MockMacroCommandWithPayloadOverriding extends MacroCommand<String>
 	
 	@Inject
 	public var pDate : Date;
+	
+	@Inject
+	public var pEnum : MockEnum;
 	
 	public function new()
 	{

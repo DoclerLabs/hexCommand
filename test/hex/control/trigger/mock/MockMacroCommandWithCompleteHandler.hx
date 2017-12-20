@@ -1,5 +1,6 @@
 package hex.control.trigger.mock;
 
+import hex.control.MockEnum;
 import hex.control.trigger.MacroCommand;
 import hex.error.Exception;
 
@@ -42,6 +43,9 @@ class MockMacroCommandWithCompleteHandler extends MacroCommand<String>
 	
 	@Inject
 	public var pDate : Date;
+	
+	@Inject
+	public var pEnum : MockEnum;
 	
 	public function new()
 	{

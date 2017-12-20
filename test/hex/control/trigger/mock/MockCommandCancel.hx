@@ -1,5 +1,6 @@
 package hex.control.trigger.mock;
 
+import hex.control.MockEnum;
 import hex.control.trigger.Command;
 import hex.error.Exception;
 
@@ -38,6 +39,9 @@ class MockCommandCancel extends Command<String>
 	
 	@Inject
 	public var pDate : Date;
+	
+	@Inject
+	public var pEnum : MockEnum;
 	
 	public function new()
 	{

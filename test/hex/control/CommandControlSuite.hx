@@ -1,5 +1,6 @@
 package hex.control;
 
+import hex.control.guard.CoreGuardSuite;
 import hex.control.trigger.CommandTriggerSuite;
 
 /**
@@ -11,6 +12,7 @@ class CommandControlSuite
 	@Suite( "Control" )
     public var list : Array<Class<Dynamic>> = 
 	[ 
+		CoreGuardSuite,
 		CommandTriggerSuite
 	];
 }

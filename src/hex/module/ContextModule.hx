@@ -15,8 +15,6 @@ import hex.error.IllegalStateException;
 import hex.log.ILogger;
 import hex.log.LogManager;
 import hex.log.message.DomainMessageFactory;
-import hex.metadata.AnnotationProvider;
-import hex.metadata.IAnnotationProvider;
 import hex.module.IContextModule;
 
 /**
@@ -26,7 +24,6 @@ import hex.module.IContextModule;
 class ContextModule implements IContextModule
 {
 	var _injector 				: Injector;
-	var _annotationProvider 	: IAnnotationProvider;
 	var _logger 				: ILogger;
 
 	public function new()
@@ -50,8 +47,6 @@ class ContextModule implements IContextModule
 	{
 		if ( !this.isInitialized )
 		{
-			this._annotationProvider = AnnotationProvider.getAnnotationProvider( this.getDomain(), null, context );
-			this._annotationProvider.registerInjector( this._injector );
 			this._onInitialisation();
 			this.isInitialized = true;
 		}
@@ -104,11 +99,6 @@ class ContextModule implements IContextModule
 			this._onRelease();
 
 			DomainExpert.getInstance().releaseDomain( this );
-
-			if ( this._annotationProvider != null )
-			{
-				this._annotationProvider.unregisterInjector( this._injector );
-			}
 			
 			this._injector.destroyInstance( this );
 			this._injector.teardown();
@@ -209,7 +199,7 @@ class ContextModule implements IContextModule
 	/**
 	 * 
 	 */
-	macro public function _getDependency<T>( ethis : Expr, clazz : ExprOf<Dependency<T>>, ?id : ExprOf<String> ) : ExprOf<T>
+	macro public function _getDependency<T>( ethis, clazz : ExprOf<Dependency<T>>, ?id : ExprOf<String> ) : ExprOf<T>
 	{
 		var classRepresentation = InjectorUtil._getStringClassRepresentation( clazz );
 		var classReference = InjectorUtil._getClassReference( clazz );

@@ -12,7 +12,6 @@ import hex.error.Exception;
 import hex.error.IllegalStateException;
 import hex.event.MessageType;
 import hex.log.ILogger;
-import hex.module.IModule;
 import hex.service.IService;
 import hex.service.ServiceConfiguration;
 import hex.unittest.assertion.Assert;
@@ -203,20 +202,20 @@ private class MockModuleListener
 	public var onInitCallCount 		: UInt = 0;
 	public var onReleaseCallCount 	: UInt = 0;
 	
-	public var moduleReference 		: IModule;
+	public var moduleReference 		: IContextModule;
 	
 	public function new()
 	{
 		
 	}
 	
-	public function onInit( moduleReference : IModule ) : Void
+	public function onInit( moduleReference : IContextModule ) : Void
 	{
 		this.onInitCallCount++;
 		this.moduleReference = moduleReference;
 	}
 	
-	public function onRelease( moduleReference : IModule ) : Void
+	public function onRelease( moduleReference : IContextModule ) : Void
 	{
 		this.onReleaseCallCount++;
 		this.moduleReference = moduleReference;

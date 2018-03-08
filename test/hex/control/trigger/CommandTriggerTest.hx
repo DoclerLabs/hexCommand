@@ -1,5 +1,6 @@
 package hex.control.trigger;
 
+import haxe.macro.Context;
 import hex.collection.Locator;
 import hex.control.trigger.MockCommandClassWithParameters;
 import hex.control.trigger.MockCommandClassWithoutParameters;
@@ -8,12 +9,11 @@ import hex.control.trigger.mock.MockCommand;
 import hex.control.trigger.mock.MockController;
 import hex.control.trigger.mock.MockMacroCommand;
 import hex.control.trigger.mock.MockMacroController;
-import hex.control.trigger.mock.MockModule;
 import hex.di.IDependencyInjector;
 import hex.di.Injector;
 import hex.di.error.MissingMappingException;
+import hex.module.ContextModule;
 import hex.module.IContextModule;
-import hex.module.IModule;
 import hex.unittest.assertion.Assert;
 import hex.unittest.runner.MethodRunner;
 
@@ -24,16 +24,16 @@ import hex.unittest.runner.MethodRunner;
 class CommandTriggerTest
 {
 	var _injector   		: Injector;
-	var _module     		: MockModule;
+	var _module     		: ContextModule;
 	var _controller 		: MockController;
 
     @Before
     public function setUp() : Void
     {
 		this._injector 				= new Injector();
-		this._module 				= new MockModule();
+		this._module 				= new ContextModule();
 		this._injector.mapToValue( IDependencyInjector, this._injector );
-		this._injector.mapToValue( IModule, this._module );
+		this._injector.mapToValue( IContextModule, this._module );
 		
         this._controller 			= new MockController();
 		this._controller.injector 	= this._injector;
@@ -182,7 +182,7 @@ class CommandTriggerTest
 		//Settings
 		var injector = new Injector();
 		injector.mapToValue( IDependencyInjector, injector );
-		injector.mapToValue( IContextModule, new MockModule() );
+		injector.mapToValue( IContextModule, new ContextModule() );
 		
         this._controller = injector.instantiateUnmapped( MockController );
 		injector.mapToValue( String, 'test' );
@@ -198,7 +198,7 @@ class CommandTriggerTest
 		//Settings
 		var injector = new Injector();
 		injector.mapToValue( IDependencyInjector, injector );
-		injector.mapToValue( IContextModule, new MockModule() );
+		injector.mapToValue( IContextModule, new ContextModule() );
 		
         this._controller = injector.instantiateUnmapped( MockController );
 		injector.mapToValue( String, 'test', 'test' );
@@ -214,7 +214,7 @@ class CommandTriggerTest
 		//Settings
 		var injector = new Injector();
 		injector.mapToValue( IDependencyInjector, injector );
-		injector.mapToValue( IContextModule, new MockModule() );
+		injector.mapToValue( IContextModule, new ContextModule() );
 		
         this._controller = injector.instantiateUnmapped( MockController );
 
@@ -232,7 +232,7 @@ class CommandTriggerTest
 		//Settings
 		var injector = new Injector();
 		injector.mapToValue( IDependencyInjector, injector );
-		injector.mapToValue( IContextModule, new MockModule() );
+		injector.mapToValue( IContextModule, new ContextModule() );
 		
         this._controller = injector.instantiateUnmapped( MockController );
 		injector.mapToValue( String, 'test1', 'test1' );
@@ -252,7 +252,7 @@ class CommandTriggerTest
 		//Settings
 		var injector = new Injector();
 		injector.mapToValue( IDependencyInjector, injector );
-		injector.mapToValue( IContextModule, new MockModule() );
+		injector.mapToValue( IContextModule, new ContextModule() );
 		
         this._controller = injector.instantiateUnmapped( MockController );
 		injector.mapToValue( String, 'test1', 'test1' );
@@ -275,7 +275,7 @@ class CommandTriggerTest
 		//Settings
 		var injector = new Injector();
 		injector.mapToValue( IDependencyInjector, injector );
-		injector.mapToValue( IContextModule, new MockModule() );
+		injector.mapToValue( IContextModule, new ContextModule() );
 		
         this._controller = injector.instantiateUnmapped( MockController );
 		injector.mapToValue( String, 'test1', 'test1' );

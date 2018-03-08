@@ -8,6 +8,7 @@ import hex.control.trigger.mock.*;
 import hex.di.Dependency;
 import hex.di.IDependencyInjector;
 import hex.di.Injector;
+import hex.module.ContextModule;
 import hex.module.IContextModule;
 import hex.unittest.assertion.Assert;
 import hex.unittest.runner.MethodRunner;
@@ -28,7 +29,7 @@ class CommandTriggerUserCaseTest
     {
 		this._injector = new Injector();
 		this._injector.mapToValue( IDependencyInjector, this._injector );
-		this._injector.mapToValue( IContextModule, new MockModule() );
+		this._injector.mapToValue( IContextModule, new ContextModule() );
 		
         this._controller = this._injector.instantiateUnmapped( MockUserController );
     }

@@ -12,8 +12,6 @@ import hex.error.Exception;
 import hex.error.IllegalStateException;
 import hex.event.MessageType;
 import hex.log.ILogger;
-import hex.service.IService;
-import hex.service.ServiceConfiguration;
 import hex.unittest.assertion.Assert;
 
 using hex.di.util.InjectorUtil;
@@ -323,38 +321,5 @@ private class MockStatefulConfig implements IStatefulConfig
 	{
 		this.injector 		= injector;
 		this.module 		= module;
-	}
-}
-
-private class MockService implements IService
-{
-	public function createConfiguration() : Void 
-	{
-		
-	}
-	
-	public function addHandler( messageType : MessageType, callback : Dynamic ) : Bool 
-	{
-		return false;
-	}
-	
-	public function removeHandler( messageType : MessageType, callback : Dynamic ) : Bool 
-	{
-		return false;
-	}
-	
-	public function getConfiguration() : ServiceConfiguration 
-	{
-		return null;
-	}
-	
-	public function setConfiguration( configuration : ServiceConfiguration ) : Void 
-	{
-		
-	}
-	
-	public function removeAllListeners() : Void 
-	{
-		
 	}
 }

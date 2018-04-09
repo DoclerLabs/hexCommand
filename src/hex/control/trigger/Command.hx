@@ -1,6 +1,5 @@
 package hex.control.trigger;
 
-import hex.control.Callback;
 import hex.control.async.AsyncCallback;
 import hex.control.async.Expect;
 import hex.control.async.Handler;
@@ -11,6 +10,7 @@ import hex.error.Exception;
 import hex.error.VirtualMethodException;
 import hex.log.ILogger;
 import hex.module.IContextModule;
+import tink.core.Callback;
 
 /**
  * ...

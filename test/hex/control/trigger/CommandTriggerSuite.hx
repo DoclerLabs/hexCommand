@@ -9,6 +9,7 @@ class CommandTriggerSuite
 	@Suite( "Trigger" )
     public var list : Array<Class<Dynamic>> = 
 	[
+		CommandTest,
 		CommandTriggerAnnotationReplaceTest,
 		CommandTriggerTest, 
 		CommandTriggerUserCaseTest,

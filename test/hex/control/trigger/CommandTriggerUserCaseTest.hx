@@ -1,9 +1,6 @@
 package hex.control.trigger;
 
 import haxe.Timer;
-import hex.control.async.AsyncCallback;
-import hex.control.async.Expect;
-import hex.control.async.Handler;
 import hex.control.trigger.mock.*;
 import hex.di.Dependency;
 import hex.di.IDependencyInjector;
@@ -14,6 +11,7 @@ import hex.unittest.assertion.Assert;
 import hex.unittest.runner.MethodRunner;
 
 using hex.di.util.InjectorUtil;
+using tink.CoreApi;
 
 /**
  * ...
@@ -46,11 +44,16 @@ class CommandTriggerUserCaseTest
 	{
 		var ageProvider = function() return 46;
 		
-		this._controller.getUserVO( ageProvider ).onComplete( 
-			function( userVO ) 
+		this._controller.getUserVO( ageProvider ).handle( 
+		
+			function( outcome )
 			{
-				MethodRunner.asyncHandler( this._onGetUser.bind( userVO ) );
-			} 
+				switch( outcome )
+				{
+					case Success( userVO ): MethodRunner.asyncHandler( this._onGetUser.bind( userVO ) );
+					case Failure( error ): trace( error );
+				}
+			}
 		);
 	}
 	
@@ -65,15 +68,22 @@ class CommandTriggerUserCaseTest
 	public function testMacroCommandWithoutMapping() : Void
 	{
 		var service = function( cityName ) 
-			return AsyncCallback.get( function( set ) Timer.delay( function() set(cityName=='Luxembourg'?20:0), 50 ) );
+			return Future.async( 
+				function( set ) Timer.delay( function() set( Success(cityName == 'Luxembourg'?20:0) ), 50 ) 
+		);
 
 		this._injector.mapDependencyToValue( new Dependency<TemperatureService>(), service );
 		
-		this._controller.getTemperature( 'Luxembourg' ).onComplete( 
-			function( temperature ) 
+		this._controller.getTemperature( 'Luxembourg' ).handle( 
+
+			function( outcome )
 			{
-				MethodRunner.asyncHandler( this._onGetTemperature.bind( temperature ) );
-			} 
+				switch( outcome )
+				{
+					case Success( temperature ): MethodRunner.asyncHandler( this._onGetTemperature.bind( temperature ) );
+					case Failure( error ): trace( error );
+				}
+			}
 		);	
 	}
 	

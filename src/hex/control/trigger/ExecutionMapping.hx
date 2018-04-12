@@ -2,7 +2,7 @@ package hex.control.trigger;
 
 import hex.control.guard.IGuard;
 import hex.control.payload.ExecutionPayload;
-import hex.error.Exception;
+using tink.CoreApi;
 
 /**
  * ...
@@ -14,9 +14,10 @@ class ExecutionMapping<ResultType>
 	var _guards 			: Array<Class<IGuard>>;
 	var _payloads 			: Array<ExecutionPayload>;
 	
-	var _completeHandlers 	: Array<ResultType->Void>;
-	var _failHandlers 		: Array<Exception->Void>;
-    var _cancelHandlers 	: Array<Void->Void>;
+	var _handlers 			: Array<Callback<Outcome<ResultType, Error>>>;
+	/*var _completeHandlers 	: Array<ResultType->Void>;
+	var _failHandlers 		: Array<Error->Void>;
+    var _cancelHandlers 	: Array<Void->Void>;*/
 
 	public function new( commandClass : Class<Command<ResultType>> ) 
 	{
@@ -77,11 +78,24 @@ class ExecutionMapping<ResultType>
         this._payloads.push( payload );
         return this;
     }
-
-    public function getCompleteHandlers() : Array<ResultType->Void>
+	
+	public function getHandlers() : Array<Callback<Outcome<ResultType, Error>>>
     {
-        return this._completeHandlers;
+        return this._handlers;
     }
+	
+	@:isVar public var hasHandler( get, null ) : Bool;
+	function get_hasHandler() : Bool return this._handlers != null;
+	
+	public function withHandler( handler : Callback<Outcome<ResultType, Error>> ) : ExecutionMapping<ResultType> 
+    {
+        if ( this._handlers == null ) this._handlers = [];
+        this._handlers.push( handler );
+        return this;
+    }
+
+    /*public function getCompleteHandlers() : Array<Callback<Outcome<ResultType, Error>>>
+		return this._handlers;
 
 	@:isVar public var hasCompleteHandler( get, null ) : Bool;
 	function get_hasCompleteHandler() : Bool
@@ -100,7 +114,7 @@ class ExecutionMapping<ResultType>
         return this;
     }
 
-    public function getFailHandlers() : Array<Exception->Void>
+    public function getFailHandlers() : Array<Error->Void>
     {
         return this._failHandlers;
     }
@@ -111,7 +125,7 @@ class ExecutionMapping<ResultType>
 		return this._failHandlers != null;
 	}
 
-    public function withFailHandler( handler : Exception->Void ) : ExecutionMapping<ResultType> 
+    public function withFailHandler( handler : Error->Void ) : ExecutionMapping<ResultType> 
     {
         if ( this._failHandlers == null )
         {
@@ -142,5 +156,5 @@ class ExecutionMapping<ResultType>
 
         this._cancelHandlers.push( handler );
         return this;
-    }
+    }*/
 }

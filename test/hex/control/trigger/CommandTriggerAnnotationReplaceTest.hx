@@ -1,4 +1,5 @@
 package hex.control.trigger;
+
 import hex.control.trigger.mock.MockAnnotationReplaceController;
 import hex.di.IDependencyInjector;
 import hex.di.Injector;

@@ -8,12 +8,12 @@ import hex.di.IDependencyInjector;
 import hex.di.Injector;
 import hex.di.error.MissingMappingException;
 import hex.domain.DomainExpert;
-import hex.error.Exception;
 import hex.error.IllegalStateException;
 import hex.event.MessageType;
 import hex.log.ILogger;
 import hex.unittest.assertion.Assert;
 
+using tink.CoreApi;
 using hex.di.util.InjectorUtil;
 
 /**
@@ -92,7 +92,7 @@ class ContextModuleTest
 		var module : MockModuleForTestigInjector = new MockModuleForTestigInjector();
 		module.getInjector().mapToValue( ContextModuleTest, this );
 		Assert.equals ( this, module.get( ContextModuleTest ), "'_get' method call should return mapping result from internal module's injector" );
-		Assert.methodCallThrows ( MissingMappingException, module, module.get, [ Exception ], "_get' method call should throw 'MissingMappingException' when the mapping is missing" );
+		Assert.methodCallThrows ( MissingMappingException, module, module.get, [ Error ], "_get' method call should throw 'MissingMappingException' when the mapping is missing" );
 	}
 	
 	@Test( "Test get accessor with name" )

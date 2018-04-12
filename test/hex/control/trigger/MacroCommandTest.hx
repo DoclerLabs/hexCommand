@@ -11,6 +11,8 @@ import hex.module.IContextModule;
 import hex.unittest.assertion.Assert;
 import hex.unittest.runner.MethodRunner;
 
+using tink.CoreApi;
+
 /**
  * ...
  * @author Francis Bourre
@@ -2111,8 +2113,25 @@ class MacroCommandTest
 		macroCommand.execute();
 		
 		var userOutcome : MockUserVO;
-		macroCommand.onComplete( function( result ) userOutcome = result );
-		macroCommand.onComplete( function( userVO ) MethodRunner.asyncHandler( this._onUserCaseComplete.bind( userVO ) ) );
+		macroCommand.handle( 
+			function( outcome ) 
+			{
+				switch( outcome : Outcome<MockUserVO, Error> ) 
+				{
+					case Success( result ): userOutcome = result;
+					case _:
+				}
+			});
+			
+		macroCommand.handle( 
+			function( outcome ) 
+			{
+				switch( outcome : Outcome<MockUserVO, Error> ) 
+				{
+					case Success( result ): MethodRunner.asyncHandler( this._onUserCaseComplete.bind( result ) );
+					case _:
+				}
+			});
 	}
 	
 	function _onUserCaseComplete( userVO : MockUserVO ) : Void
@@ -2149,5 +2168,4 @@ class MacroCommandTest
 		Assert.isNotNull(macroCommand.commandSelfReturn.getOwner());
 		Assert.equals(owner, macroCommand.commandSelfReturn.getOwner());
 	}
-	
 }

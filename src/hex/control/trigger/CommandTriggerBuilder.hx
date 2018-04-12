@@ -153,7 +153,7 @@ class CommandTriggerBuilder
 								
 								this.injector.unmapClassName( 'Array<hex.control.payload.ExecutionPayload>' );
 								
-								return command;
+								return command.promise;
 							};
 						}
 						else
@@ -169,7 +169,7 @@ class CommandTriggerBuilder
 								command.setOwner( this.module );
 								command.execute();
 
-								return command;
+								return command.promise;
 							};
 						}
 					}

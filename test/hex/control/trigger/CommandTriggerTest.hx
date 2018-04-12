@@ -1,6 +1,5 @@
 package hex.control.trigger;
 
-import haxe.macro.Context;
 import hex.collection.Locator;
 import hex.control.trigger.MockCommandClassWithParameters;
 import hex.control.trigger.MockCommandClassWithoutParameters;
@@ -17,6 +16,8 @@ import hex.module.IContextModule;
 import hex.unittest.assertion.Assert;
 import hex.unittest.runner.MethodRunner;
 
+using tink.CoreApi;
+
 /**
  * ...
  * @author Francis Bourre
@@ -27,7 +28,7 @@ class CommandTriggerTest
 	var _module     		: ContextModule;
 	var _controller 		: MockController;
 
-    @Before
+	@Before
     public function setUp() : Void
     {
 		this._injector 				= new Injector();
@@ -71,10 +72,15 @@ class CommandTriggerTest
 			Assert.isNull( MockCommandClassWithParameters.ignored, 'Last parameter should be ignored' );
 		}
 		
-		this._controller.say( "hola mundo", this, "ignore that", new Locator<String, Bool>() ).onComplete( 
-			function( message : String ) 
+		this._controller.say( "hola mundo", this, "ignore that", new Locator<String, Bool>() ).handle( 
+			function( outcome ) 
 			{
-				MethodRunner.asyncHandler( f.bind( message ) );
+				switch( outcome )
+				{
+					case Success( message ): MethodRunner.asyncHandler( f.bind( message ) );
+					case Failure( error ): trace( error );
+				}
+				
 			} 
 		);
 	}
@@ -111,10 +117,15 @@ class CommandTriggerTest
 			Assert.isNull( MockCommandClassWithParameters.ignored, 'Last parameter should be ignored' );
 		}
 		
-		controller.say( "hola mundo", this, new Locator<String, Bool>() ).onComplete( 
-			function( message : String ) 
+		controller.say( "hola mundo", this, new Locator<String, Bool>() ).handle( 
+			function( outcome ) 
 			{
-				MethodRunner.asyncHandler( f.bind( message ) );
+				switch( outcome )
+				{
+					case Success( message ): MethodRunner.asyncHandler( f.bind( message ) );
+					case Failure( error ): trace( error );
+				}
+				
 			} 
 		);
 		
@@ -133,7 +144,17 @@ class CommandTriggerTest
 		
 		var result = '';
 		controller.doSomething( vos[ 0 ], vos[ 1 ], vos[ 2 ], vos[ 3 ], vos[ 4 ], vos[ 5 ], vos[ 6 ], vos[ 7 ], [3, 4], vos[ 8 ], vos[ 9 ] )
-			.onComplete( function(r) { result = r; } );
+			.handle(
+				function( outcome ) 
+				{
+					switch( outcome )
+					{
+						case Success( r ): result = r;
+						case Failure( error ): trace( error );
+					}
+					
+				} 
+			);
 		
 		Assert.equals( 'string2', result );
 		

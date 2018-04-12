@@ -4,10 +4,11 @@ import hex.control.guard.GuardUtil;
 import hex.control.payload.ExecutionPayload;
 import hex.control.payload.PayloadUtil;
 import hex.di.IDependencyInjector;
-import hex.error.Exception;
 import hex.error.IllegalStateException;
 import hex.error.VirtualMethodException;
 import hex.util.Stringifier;
+
+using tink.CoreApi;
 
 /**
  * ...
@@ -77,37 +78,24 @@ class MacroCommand<ResultType> extends Command<ResultType>
 			
 			if ( command != null )
 			{
-				command.setOwner(_owner);
+				command.setOwner( _owner );
 				command.execute();
 				
 				if ( this.isInSequenceMode )
 				{
-					command
-						.onComplete( this._onComplete )
-							.onFail( this._onFail )
-								.onCancel( this._onCancel );
+					command.handle( this._whenDone );
 				}
 				else
 				{
-					command
-						.onComplete( this._onParallelComplete )
-							.onFail( this._onParallelFail )
-								.onCancel( this._onParallelCancel );
-								
+					command.handle( this._whenParallelDone );		
 					this._executeNextCommand();
 				}
 			}
 			else
 			{
-				//command fails
-				if ( this.isAtomic )
-				{
-					this._fail( new Exception( 'MacroCommand fails' ) );
-				}
-				else
-				{
-					this._executeNextCommand();
-				}
+				//command failure
+				if ( this.isAtomic ) this._fail( new Error( 'MacroCommand fails' ) );
+					else this._executeNextCommand();
 			}
 			
 		}
@@ -117,80 +105,60 @@ class MacroCommand<ResultType> extends Command<ResultType>
 		}
 	}
 	
-	function _onComplete( result : ResultType ) : Void
+	function _whenDone( outcome ) : Void
 	{
-		this._executeNextCommand();
-	}
-	
-	function _onFail( e : Exception ) : Void
-	{
-		if ( this.isAtomic )
+		switch( outcome : Outcome<ResultType, Error> )
 		{
-			this._fail( e );
-		}
-		else
-		{
-			this._executeNextCommand();
-		}
-	}
-	
-	function _onCancel() : Void
-	{
-		if ( this.isAtomic )
-		{
-			this._cancel();
-		}
-		else
-		{
-			this._executeNextCommand();
-		}
-	}
-	
-	function _onParallelComplete( result : ResultType ) : Void
-	{
-		this._parallelExecution--;
-		if ( this._parallelExecution == 0 )
-		{
-			this._parallelExecution = -1;
-			this._complete( this._result );
-		}
-	}
-	
-	function _onParallelFail( e : Exception ) : Void
-	{
-		this._parallelExecution--;
+			case Success( result ): 
+				this._executeNextCommand();
 		
-		if ( this.isAtomic && this._parallelExecution > -1 )
-		{
-			this._parallelExecution = -1;
-			this._fail( e );
-		}
-		else if( this._parallelExecution == 0 )
-		{
-			this._complete( null );
+			case Failure( error ): 
+				var callback = switch( error.code )
+				{
+					case Command.OperationCancelled: 	this._cancel.bind();
+					default: 							this._fail.bind( error );
+				}
+				
+				if ( this.isAtomic ) callback();
+					else this._executeNextCommand();
 		}
 	}
 	
-	function _onParallelCancel() : Void
+	function _whenParallelDone( outcome )
 	{
-		this._parallelExecution--;
+		switch( outcome : Outcome<ResultType, Error> )
+		{
+			case Success( result ): 
+				this._parallelExecution--;
+				if ( this._parallelExecution == 0 )
+				{
+					this._parallelExecution = -1;
+					this._complete( this._result );
+				}
 		
-		if ( this.isAtomic && this._parallelExecution > -1 )
-		{
-			this._parallelExecution = -1;
-			this._cancel();
-		}
-		else if( this._parallelExecution == 0 )
-		{
-			this._complete( null );
+			case Failure( error ): 
+				var callback = switch( error.code )
+				{
+					case Command.OperationCancelled: 	this._cancel.bind();
+					default: 							this._fail.bind( error );
+				}
+				
+				this._parallelExecution--;
+		
+				if ( this.isAtomic && this._parallelExecution > -1 )
+				{
+					this._parallelExecution = -1;
+					callback();
+				}
+				else if( this._parallelExecution == 0 )
+				{
+					this._complete( null );
+				}
 		}
 	}
 	
 	@:isVar public var isAtomic( get, set ) : Bool;
-	function get_isAtomic() : Bool
-	{
-		return this.isAtomic;
-	}
+	function get_isAtomic() return this.isAtomic;
 	
 	function set_isAtomic( value : Bool ) : Bool
 	{
@@ -199,10 +167,7 @@ class MacroCommand<ResultType> extends Command<ResultType>
 	}
 	
 	@:isVar public var isInSequenceMode( get, set ) : Bool;
-	function get_isInSequenceMode() : Bool
-	{
-		return this.isInSequenceMode;
-	}
+	function get_isInSequenceMode() return this.isInSequenceMode;
 	
 	function set_isInSequenceMode( value : Bool ) : Bool
 	{
@@ -212,10 +177,7 @@ class MacroCommand<ResultType> extends Command<ResultType>
 	
 	@:isVar
 	public var isInParallelMode( get, set ) : Bool;
-	function get_isInParallelMode() : Bool
-	{
-		return !this.isInSequenceMode;
-	}
+	function get_isInParallelMode() return !this.isInSequenceMode;
 	
 	function set_isInParallelMode( value : Bool ) : Bool
 	{
@@ -223,26 +185,16 @@ class MacroCommand<ResultType> extends Command<ResultType>
 		return this.isInSequenceMode;
 	}
 	
-	public function toString() : String
-	{
-		return Stringifier.stringify( this );
-	}
+	public function toString() return Stringifier.stringify( this );
 	
-	//
 	static public function getCommand<ResultType>( injector : IDependencyInjector, mapping : ExecutionMapping<ResultType>, payloads : Array<ExecutionPayload> ) : Command<ResultType>
     {
 		// Build payloads collection
 		var mappedPayloads : Array<ExecutionPayload> = mapping.getPayloads();
-		if ( mappedPayloads != null )
-		{
-			payloads = payloads.concat( mappedPayloads );
-		}
+		if ( mappedPayloads != null ) payloads = payloads.concat( mappedPayloads );
 		
 		// Map payloads
-        if ( payloads != null )
-        {
-            PayloadUtil.mapPayload( payloads, injector );
-        }
+        if ( payloads != null ) PayloadUtil.mapPayload( payloads, injector );
 		
 		// Instantiate command
 		var command : Command<ResultType> = null;
@@ -252,14 +204,10 @@ class MacroCommand<ResultType> extends Command<ResultType>
 		}
 
 		// Unmap payloads
-        if ( payloads != null )
-        {
-            PayloadUtil.unmapPayload( payloads, injector );
-        }
-		
-		if ( mapping.hasCompleteHandler )   for ( handler in mapping.getCompleteHandlers() ) 	command.onComplete( handler );
-		if ( mapping.hasFailHandler )       for ( handler in mapping.getFailHandlers() ) 		command.onFail( handler );
-		if ( mapping.hasCancelHandler )     for ( handler in mapping.getCancelHandlers() ) 		command.onCancel( handler );
+        if ( payloads != null ) PayloadUtil.unmapPayload( payloads, injector );
+
+		//Set Promise handlers
+		if ( mapping.hasHandler ) for ( handler in mapping.getHandlers() ) command.handle( handler );
 
 		return command;
     }

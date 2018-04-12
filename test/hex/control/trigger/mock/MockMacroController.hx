@@ -2,7 +2,8 @@ package hex.control.trigger.mock;
 
 import hex.collection.ILocator;
 import hex.control.MockEnum;
-import hex.control.async.Expect;
+
+using tink.CoreApi;
 
 /**
  * ...
@@ -27,7 +28,7 @@ class MockMacroController
 		@Ignore							ai	: Array<Int>,
 										d 	: Date,
 										me	: MockEnum
-	) : Expect<String>;
+	) : Promise<String>;
 	
 	public function sum( a : Int, b : Int ) : Int 
 	{ 
@@ -39,5 +40,5 @@ class MockMacroController
 							@Name( 'text' ) 		text 		: String, 
 													sender 		: CommandTriggerTest, 
 													locator 	: ILocator<String,Bool>
-						) : Expect<String>;
+						) : Promise<String>;
 }

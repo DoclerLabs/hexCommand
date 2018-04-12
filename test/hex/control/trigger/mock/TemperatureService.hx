@@ -1,8 +1,8 @@
 package hex.control.trigger.mock;
 
-import hex.control.async.Expect;
+using tink.CoreApi;
 
 /**
  * @author Francis Bourre
  */
-typedef TemperatureService = String->Expect<Int>;
+typedef TemperatureService = String->Promise<Int>;

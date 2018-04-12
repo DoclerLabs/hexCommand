@@ -9,7 +9,6 @@ import hex.di.Injector;
 import hex.di.error.MissingMappingException;
 import hex.domain.DomainExpert;
 import hex.error.IllegalStateException;
-import hex.event.MessageType;
 import hex.log.ILogger;
 import hex.unittest.assertion.Assert;
 

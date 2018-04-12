@@ -1,12 +1,10 @@
 package hex.module;
 
-import hex.log.ILogger;
-import hex.di.IDependencyInjector;
-import hex.core.ICoreFactory;
-import hex.event.MessageType;
-
 import hex.core.IApplicationContext;
+import hex.core.ICoreFactory;
+import hex.di.IDependencyInjector;
 import hex.domain.Domain;
+import hex.log.ILogger;
 
 /**
  * ...
@@ -27,11 +25,6 @@ class MockApplicationContext implements IApplicationContext
 	public function getDomain() : Domain 
 	{
 		return null;
-	}
-	
-	public function dispatch( messageType : MessageType, ?data : Array<Dynamic> ) : Void 
-	{
-		
 	}
 	
 	public function getCoreFactory() : ICoreFactory 

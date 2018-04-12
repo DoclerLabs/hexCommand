@@ -6,7 +6,6 @@ import hex.control.payload.PayloadUtil;
 import hex.di.IDependencyInjector;
 import hex.error.IllegalStateException;
 import hex.error.VirtualMethodException;
-import hex.util.Stringifier;
 
 using tink.CoreApi;
 
@@ -184,8 +183,6 @@ class MacroCommand<ResultType> extends Command<ResultType>
 		this.isInSequenceMode = !value;
 		return this.isInSequenceMode;
 	}
-	
-	public function toString() return Stringifier.stringify( this );
 	
 	static public function getCommand<ResultType>( injector : IDependencyInjector, mapping : ExecutionMapping<ResultType>, payloads : Array<ExecutionPayload> ) : Command<ResultType>
     {

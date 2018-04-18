@@ -7,7 +7,6 @@ import haxe.macro.Expr.Access;
 import haxe.macro.Expr.Field;
 import haxe.macro.Expr.Position;
 import hex.annotation.AnnotationReplaceBuilder;
-import hex.control.payload.ExecutionPayload;
 import hex.control.trigger.Command;
 import hex.di.IDependencyInjector;
 import hex.module.IContextModule;

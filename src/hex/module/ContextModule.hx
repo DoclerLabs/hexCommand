@@ -7,14 +7,11 @@ import hex.di.Dependency;
 import hex.di.IBasicInjector;
 import hex.di.IDependencyInjector;
 import hex.di.Injector;
-import hex.di.provider.DomainLoggerProvider;
+import hex.di.provider.LoggerProvider;
 import hex.di.util.InjectorUtil;
-import hex.domain.Domain;
-import hex.domain.DomainExpert;
 import hex.error.IllegalStateException;
 import hex.log.ILogger;
 import hex.log.LogManager;
-import hex.log.message.DomainMessageFactory;
 import hex.module.IContextModule;
 
 /**
@@ -34,9 +31,8 @@ class ContextModule implements IContextModule
 
 		this._injector.mapToValue( IContextModule, this );
 		
-		var factory = new DomainMessageFactory( this.getDomain() );
-		this._logger = LogManager.getLoggerByInstance( this, factory );
-		this._injector.map( ILogger ).toProvider( new DomainLoggerProvider( factory, this._logger ) );
+		this._logger = LogManager.getLoggerByInstance( this );
+		this._injector.map( ILogger ).toProvider( new LoggerProvider( this._logger ) );
 	}
 			
 	/**
@@ -79,15 +75,6 @@ class ContextModule implements IContextModule
 	}
 
 	/**
-	 * Get module's domain
-	 * @return Domain
-	 */
-	public function getDomain() : Domain
-	{
-		return DomainExpert.getInstance().getDomainFor( this );
-	}
-
-	/**
 	 * Release this module
 	 */
 	@:final 
@@ -97,8 +84,6 @@ class ContextModule implements IContextModule
 		{
 			this.isReleased = true;
 			this._onRelease();
-
-			DomainExpert.getInstance().releaseDomain( this );
 			
 			this._injector.destroyInstance( this );
 			this._injector.teardown();

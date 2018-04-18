@@ -7,7 +7,6 @@ import hex.di.IBasicInjector;
 import hex.di.IDependencyInjector;
 import hex.di.Injector;
 import hex.di.error.MissingMappingException;
-import hex.domain.DomainExpert;
 import hex.error.IllegalStateException;
 import hex.log.ILogger;
 import hex.unittest.assertion.Assert;
@@ -78,8 +77,6 @@ class ContextModuleTest
 		module.release();
 		Assert.equals( 1, module.releaseCallCount, "release should have been called once" );
 		Assert.isTrue( module.isReleased, "'isReleased' should return true" );
-		
-		Assert.isNull( DomainExpert.getInstance().getDomainFor( module ), "domain should be null" );
 		Assert.isNull( module.getLogger(), "logger should be null" );
 		
 		Assert.methodCallThrows( IllegalStateException, module, module.release, [], "'release' called twice should throw 'IllegalStateException'" );

@@ -2,14 +2,13 @@ package hex.control.trigger;
 
 import hex.control.async.AsyncResult;
 import hex.control.command.ICommand;
-import hex.control.payload.ExecutionPayload;
+import hex.di.IDependencyInjector;
 import hex.di.IInjectorContainer;
 import hex.error.VirtualMethodException;
 import hex.log.ILogger;
 import hex.module.IContextModule;
 
 using tink.CoreApi;
-
 /**
  * ...
  * @author Francis Bourre
@@ -18,6 +17,10 @@ class Command<ResultType>
 	implements ICommand 
 	implements IInjectorContainer
 {
+	#if macro
+	@:deprecated('if you see this, something is wrong')
+	public function acceptInjector(i:IDependencyInjector) {}
+	#end
 	public static inline var OperationCancelled = 20000;
 	
 	var _promise 			: Promise<ResultType>;
@@ -143,11 +146,6 @@ class Command<ResultType>
 	}
 	
 	public function getResult() : Array<Dynamic>
-	{
-		return null;
-	}
-	
-	public function getReturnedExecutionPayload() : Array<ExecutionPayload>
 	{
 		return null;
 	}

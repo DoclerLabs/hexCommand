@@ -2,8 +2,12 @@ package hex.control.guard;
 
 import hex.control.guard.GuardUtil;
 import hex.control.guard.IGuard;
+import hex.di.ClassName;
+import hex.di.ClassRef;
 import hex.di.IDependencyInjector;
+import hex.di.IInjectorAcceptor;
 import hex.di.IInjectorListener;
+import hex.di.MappingName;
 import hex.di.provider.IDependencyProvider;
 import hex.unittest.assertion.Assert;
 
@@ -85,102 +89,103 @@ private class MockDependencyInjectorForTestingGuard extends MockDependencyInject
 
 private class MockDependencyInjector implements IDependencyInjector
 {
-	public function hasMapping( type : Class<Dynamic>, name : String = '' ) : Bool 
+	//
+	public function hasMapping<T>( type : ClassRef<T>, ?name : MappingName ) : Bool
 	{
 		return false;
 	}
 	
-	public function hasDirectMapping( type : Class<Dynamic>, name:String = '' ) : Bool 
+	public function hasDirectMapping<T>( type : ClassRef<T>, ?name : MappingName) : Bool
 	{
 		return false;
 	}
 	
-	public function satisfies( type : Class<Dynamic>, name : String = '' ) : Bool 
+	public function satisfies<T>( type : ClassRef<T>, ?name : MappingName ) : Bool
 	{
 		return false;
 	}
 	
-	public function injectInto( target : Dynamic ) : Void 
+	public function injectInto( target : IInjectorAcceptor ) : Void
 	{
 		
 	}
 	
-	public function getInstance<T>( type : Class<T>, name : String = '', targetType : Class<Dynamic> = null ) : T 
+	public function getInstance<T>( type : ClassRef<T>, ?name : MappingName, targetType : Class<Dynamic> = null ) : T
 	{
 		return null;
 	}
 	
-	public function getInstanceWithClassName<T>( className : String, name : String = '', targetType : Class<Dynamic> = null, shouldThrowAnError : Bool = true ) : T
+	public function getInstanceWithClassName<T>( className : ClassName, ?name : MappingName, targetType : Class<Dynamic> = null, shouldThrowAnError : Bool = true ) : T
 	{
 		return null;
 	}
 	
-	public function getOrCreateNewInstance<T>( type : Class<Dynamic> ) : T 
+	public function getOrCreateNewInstance<T>( type : Class<T> ) : T
 	{
 		return null;
 	}
 	
-	public function instantiateUnmapped<T>( type : Class<Dynamic> ) : T 
+	public function instantiateUnmapped<T>( type : Class<T> ) : T
 	{
 		return null;
 	}
 	
-	public function destroyInstance( instance : Dynamic ) : Void 
+	public function destroyInstance<T>( instance : T ) : Void
 	{
 		
 	}
 	
-	public function mapToValue( clazz : Class<Dynamic>, value : Dynamic, ?name : String = '' ) : Void 
+	public function mapToValue<T>( clazz : ClassRef<T>, value : T, ?name : MappingName ) : Void
 	{
 		
 	}
 	
-	public function mapToType( clazz : Class<Dynamic>, type : Class<Dynamic>, name : String = '' ) : Void 
+	public function mapToType<T>( clazz : ClassRef<T>, type : Class<T>, ?name : MappingName ) : Void
 	{
 		
 	}
 	
-	public function mapToSingleton( clazz : Class<Dynamic>, type : Class<Dynamic>, name : String = '' ) : Void 
+	public function mapToSingleton<T>( clazz : ClassRef<T>, type : Class<T>, ?name : MappingName ) : Void
 	{
 		
 	}
 	
-	public function unmap( type : Class<Dynamic>, name : String = '' ) : Void 
+	public function unmap<T>( type : ClassRef<T>, ?name : MappingName ) : Void 
 	{
 		
 	}
 
-	public function addListener( listener : IInjectorListener ) : Bool
+	public function addListener( listener: IInjectorListener ) : Bool
 	{
 		return false;
 	}
 
-	public function removeListener( listener : IInjectorListener ) : Bool
+	public function removeListener( listener: IInjectorListener ) : Bool
 	{
 		return false;
 	}
 	
-	public function getProvider<T>( className : String, name : String = '' ) : IDependencyProvider<T>
+	public function getProvider<T>( className : ClassName, ?name : MappingName ) : IDependencyProvider<T>
 	{
 		return null;
 	}
 	
-	public function mapClassNameToValue( className : String, value : Dynamic, ?name : String = '' ) : Void
+	public function mapClassNameToValue<T>( className : ClassName, value : T, ?name : MappingName ) : Void
 	{
 		
 	}
 
-    public function mapClassNameToType( className : String, type : Class<Dynamic>, name:String = '' ) : Void
+    public function mapClassNameToType<T>( className : ClassName, type : Class<T>, ?name : MappingName ) : Void
 	{
 		
 	}
 
-    public function mapClassNameToSingleton( className : String, type : Class<Dynamic>, name:String = '' ) : Void
+    public function mapClassNameToSingleton<T>( className : ClassName, type : Class<T>, ?name : MappingName ) : Void
 	{
 		
 	}
 	
-	public function unmapClassName( className : String, name : String = '' ) : Void
+	public function unmapClassName( className : ClassName, ?name : MappingName ) : Void
 	{
 		
 	}

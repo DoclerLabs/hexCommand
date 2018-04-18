@@ -3,7 +3,6 @@ package hex.module;
 import hex.core.IApplicationContext;
 import hex.core.ICoreFactory;
 import hex.di.IDependencyInjector;
-import hex.domain.Domain;
 import hex.log.ILogger;
 
 /**
@@ -18,11 +17,6 @@ class MockApplicationContext implements IApplicationContext
 	}
 	
 	public function getName() : String 
-	{
-		return null;
-	}
-	
-	public function getDomain() : Domain 
 	{
 		return null;
 	}

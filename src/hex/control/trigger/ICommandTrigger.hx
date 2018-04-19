@@ -1,6 +1,6 @@
 package hex.control.trigger;
 
-import hex.di.IAutoInject;
+import hex.di.annotation.IAutoInject;
 import hex.di.IDependencyInjector;
 import hex.di.IInjectorContainer;
 import hex.module.IContextModule;

@@ -3,7 +3,6 @@ package hex.control.payload;
 import hex.di.ClassName;
 import hex.di.ClassRef;
 import hex.di.MappingName;
-import hex.error.NullPointerException;
 
 /**
  * ...
@@ -13,8 +12,8 @@ typedef ExecutionPayload = Payload<Dynamic>;
 
 abstract Payload<T>( {data: T, type: ClassRef<T>, name: MappingName, className: ClassName} ) 
 {
-	inline public function new( data: T, type: ClassRef<T> = null, ?name: MappingName )
-		this = { data: data, type: type, name: name, className: null };
+	inline function new( data: T, type: ClassRef<T> = null, ?name: MappingName, ?className: ClassName )
+		this = { data: data, type: type, name: name, className: className };
 		
 	inline public function getData() return this.data;
 	
@@ -24,18 +23,9 @@ abstract Payload<T>( {data: T, type: ClassRef<T>, name: MappingName, className: 
 	
 	@:to inline function toName() : MappingName return this.name;
 	
-	@:from static inline function ofObject<T>( o: {data: T, type: ClassRef<T>, name: MappingName, className: ClassName} ) : Payload<T>
-		return new Payload( o.data, o.type, o.name ).withClassName( o.className );
-
-    inline public function withName( name : MappingName ) : Payload<T>
-    {
-        this.name = name;
-        return cast this;
-    }
+	@:from static inline function ofDynObject<T>( o: {data: T, type: Dynamic, name: String, className: String} ) : Payload<T>
+		return new Payload( o.data, o.type, o.name!=null?o.name:'', o.className );
 	
-	inline public function withClassName( className : ClassName ) : Payload<T>
-    {
-        this.className = className;
-        return cast this;
-    }
+	@:from static inline function ofObject<T>( o: {data: T, type: ClassRef<T>, name: MappingName, className: ClassName} ) : Payload<T>
+		return new Payload( o.data, o.type, o.name, o.className );
 }

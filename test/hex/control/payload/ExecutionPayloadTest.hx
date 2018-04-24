@@ -4,8 +4,6 @@ import hex.control.payload.ExecutionPayload;
 import hex.di.ClassName;
 import hex.di.ClassRef;
 import hex.di.MappingName;
-import hex.error.IllegalArgumentException;
-import hex.error.NullPointerException;
 import hex.unittest.assertion.Assert;
 
 /**
@@ -14,14 +12,13 @@ import hex.unittest.assertion.Assert;
  */
 class ExecutionPayloadTest
 {
-	/*var _data 				: MockData;
-	var _executionPayload 	: Payload<MockData>;
+	var _data 				: MockData;
+	var _executionPayload 	: ExecutionPayload;
 
     @Before
     public function setUp() : Void
     {
         this._data 				= new MockData();
-        //this._executionPayload 	= new ExecutionPayload( this._data, IMockData, "name" );
         this._executionPayload 	= { data: this._data, type: IMockData, name: "name", className: null };
     }
 
@@ -46,8 +43,7 @@ class ExecutionPayloadTest
 		Assert.isNull( className, "class name should be null when it's not setted through accessor" );
 	}
 
-//		{ type : Class<hex.control.payload.IMockData>, name : String, data : hex.control.payload._ExecutionPayloadTest.MockData, className : hex.di.ClassName } should be hex.control.payload.ExecutionPayload
-	@Test( "Test overwriting name property" )
+	/*@Test( "Test overwriting name property" )
     public function testOverwritingName() : Void
     {
 		this._executionPayload.withName( "anotherName" );
@@ -55,13 +51,12 @@ class ExecutionPayloadTest
 		
         Assert.notEquals( "name", mappingName, "name should not be the same" );
         Assert.equals( "anotherName", mappingName, "name should be the same" );
-    }
+    }*/
 	
 	@Test( "Test passing no name parameter to constructor" )
     public function testNoNameParameterToConstructor() : Void
     {
-		//var executionPayload = new ExecutionPayload( this._data, IMockData );
-		var executionPayload = { data: this._data, type: IMockData, name: null, className: null };
+		var executionPayload : ExecutionPayload = { data: this._data, type: IMockData, name: null, className: null };
 		var mappingName : MappingName = executionPayload;
         Assert.equals( "", mappingName, "name should be empty String" );
     }
@@ -69,7 +64,6 @@ class ExecutionPayloadTest
 	@Test( "Test constructor without type" )
     public function testConstructorWithoutType() : Void
     {
-		//this._executionPayload 	= new ExecutionPayload( "test" );
 		this._executionPayload 	= { data: 'test', type: null, name: null, className: null };
 		var classRef : ClassRef<String> = this._executionPayload;
 		var mappingName : MappingName = this._executionPayload;
@@ -81,7 +75,6 @@ class ExecutionPayloadTest
 	@Test( "Test constructor without type with name" )
     public function testConstructorWithoutTypeWithName() : Void
     {
-		//this._executionPayload 	= new ExecutionPayload( this._data ).withName( "name" );
 		this._executionPayload 	= { data: this._data, type: null, name: 'name', className: null };
 		var classRef : ClassRef<String> = this._executionPayload;
 		var mappingName : MappingName = this._executionPayload;
@@ -95,7 +88,6 @@ class ExecutionPayloadTest
     public function testSettingClassName() : Void
     {
 		var data = new MockDataWithGeneric<String>();
-		//this._executionPayload 	= new ExecutionPayload( data ).withClassName( "hex.control.payload.MockDataWithGeneric<String>" ).withName( "name" );
 		this._executionPayload 	= { data: data, type: null, name: 'name', className: "hex.control.payload.MockDataWithGeneric<String>" };
 		var classRef : ClassRef<MockDataWithGeneric<String>> = this._executionPayload;
 		var className : ClassName = this._executionPayload;
@@ -105,7 +97,7 @@ class ExecutionPayloadTest
         Assert.equals( MockDataWithGeneric, classRef, "type should be the same" );
         Assert.equals( "hex.control.payload.MockDataWithGeneric<String>", className, "class name should be the same" );
         Assert.equals( "name", mappingName, "name should be the same" );
-    }*/
+    }
 }
 
 private class MockData implements IMockData

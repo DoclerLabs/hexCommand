@@ -42,18 +42,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -147,18 +147,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -239,18 +239,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -331,18 +331,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -436,18 +436,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -540,18 +540,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -643,18 +643,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -746,18 +746,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -850,18 +850,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -954,18 +954,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -1058,20 +1058,20 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
-
+		
 		//
 		var injector =  new Injector();
 		injector.mapToValue( IDependencyInjector, injector );
@@ -1132,18 +1132,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -1236,18 +1236,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -1328,18 +1328,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -1432,18 +1432,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -1540,18 +1540,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -1636,18 +1636,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -1732,18 +1732,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -1840,18 +1840,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -1948,18 +1948,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -2056,18 +2056,18 @@ class MacroCommandTest
 		vos[ 8 ] = Date.now();
 		vos[ 9 ] = MockEnum.TEST;
 		
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( vos[ 0 ], String, 'name1' ),
-			new ExecutionPayload( vos[ 1 ] ).withClassName( 'String' ).withName( 'name2' ),
-			new ExecutionPayload( vos[ 2 ] ).withClassName( 'Int' ),
-			new ExecutionPayload( vos[ 3 ] ).withClassName( 'UInt' ),
-			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
-			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
-			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
-			new ExecutionPayload( vos[ 8 ], Date ),
-			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
+			{ data: vos[ 0 ], type: String, name: 'name1', className: null },
+			{ data: vos[ 1 ], type: null, name: 'name2', className: 'String' },
+			{ data: vos[ 2 ], type: null, name: null, className: 'Int' },
+			{ data: vos[ 3 ], type: null, name: null, className: 'UInt' },
+			{ data: vos[ 4 ], type: null, name: null, className: 'Float' },
+			{ data: vos[ 5 ], type: null, name: null, className: 'Bool' },
+			{ data: vos[ 6 ], type: null, name: null, className: 'Array<String>' },
+			{ data: vos[ 7 ], type: null, name: null, className: 'Map<String,String>' },
+			{ data: vos[ 8 ], type: Date, name: null, className:null },
+			{ data: vos[ 9 ], type: null, name: null, className: 'hex.control.MockEnum' }
 		];
 
 		//
@@ -2096,9 +2096,9 @@ class MacroCommandTest
 	@Async( "test MacroCommand user case" )
 	public function testMacroCommandUserCase() : Void
 	{
-		var payloads =
+		var payloads : Array<ExecutionPayload> =
 		[
-			new ExecutionPayload( function() return 46 ).withClassName( 'Void->UInt' )
+			{ data: function() return 46, type: null, name: null, className: 'Void->UInt' }
 		];
 		
 		//

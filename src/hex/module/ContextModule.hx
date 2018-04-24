@@ -3,10 +3,12 @@ package hex.module;
 import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.IStatelessConfig;
 import hex.core.IApplicationContext;
+import hex.di.ClassRef;
 import hex.di.Dependency;
 import hex.di.IBasicInjector;
 import hex.di.IDependencyInjector;
 import hex.di.Injector;
+import hex.di.MappingName;
 import hex.di.provider.LoggerProvider;
 import hex.di.util.InjectorUtil;
 import hex.error.IllegalStateException;
@@ -161,7 +163,7 @@ class ContextModule implements IContextModule
 	/**
 	 * 
 	 */
-	function _get<T>( type : Class<T>, name : String = '' ) : T
+	function _get<T>( type : ClassRef<T>, ?name : MappingName ) : T
 	{
 		return this._injector.getInstance( type, name );
 	}
@@ -169,7 +171,7 @@ class ContextModule implements IContextModule
 	/**
 	 * 
 	 */
-	function _map<T>( tInterface : Class<T>, ?tClass : Class<T>,  name : String = "", asSingleton : Bool = false ) : Void
+	function _map<T>( tInterface : ClassRef<T>, ?tClass : Class<T>,  ?name : MappingName, asSingleton : Bool = false ) : Void
 	{
 		if ( asSingleton )
 		{

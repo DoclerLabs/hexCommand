@@ -51,7 +51,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -156,7 +156,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -248,7 +248,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -340,7 +340,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -445,7 +445,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -549,7 +549,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -652,7 +652,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -755,7 +755,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -859,7 +859,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -963,7 +963,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -1067,7 +1067,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -1141,7 +1141,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -1245,7 +1245,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -1337,7 +1337,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -1441,7 +1441,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -1549,7 +1549,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -1645,7 +1645,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -1741,7 +1741,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -1849,7 +1849,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -1957,7 +1957,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];
@@ -2065,7 +2065,7 @@ class MacroCommandTest
 			new ExecutionPayload( vos[ 4 ] ).withClassName( 'Float' ),
 			new ExecutionPayload( vos[ 5 ] ).withClassName( 'Bool' ),
 			new ExecutionPayload( vos[ 6 ] ).withClassName( 'Array<String>' ),
-			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String, String>' ),
+			new ExecutionPayload( vos[ 7 ] ).withClassName( 'Map<String,String>' ),
 			new ExecutionPayload( vos[ 8 ], Date ),
 			new ExecutionPayload( vos[ 9 ] ).withClassName( 'hex.control.MockEnum' )
 		];

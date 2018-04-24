@@ -14,7 +14,7 @@ typedef ExecutionPayload = Payload<Dynamic>;
 abstract Payload<T>( {data: T, type: ClassRef<T>, name: MappingName, className: ClassName} ) 
 {
 	inline public function new( data: T, type: ClassRef<T> = null, ?name: MappingName )
-		this = { data: data, type: type, name: '' + name, className: null };
+		this = { data: data, type: type, name: name, className: null };
 		
 	inline public function getData() return this.data;
 	
@@ -23,7 +23,6 @@ abstract Payload<T>( {data: T, type: ClassRef<T>, name: MappingName, className: 
 	@:to inline function toClassName() : ClassName return this.className;
 	
 	@:to inline function toName() : MappingName return this.name;
-	
 	
 	@:from static inline function ofObject<T>( o: {data: T, type: ClassRef<T>, name: MappingName, className: ClassName} ) : Payload<T>
 		return new Payload( o.data, o.type, o.name ).withClassName( o.className );
@@ -36,7 +35,7 @@ abstract Payload<T>( {data: T, type: ClassRef<T>, name: MappingName, className: 
 	
 	inline public function withClassName( className : ClassName ) : Payload<T>
     {
-        this.className = ('' + className).split( " " ).join( '' );
+        this.className = className;
         return cast this;
     }
 }

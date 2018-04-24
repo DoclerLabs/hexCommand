@@ -9,45 +9,33 @@ import hex.error.NullPointerException;
  * ...
  * @author Francis Bourre
  */
-
 typedef ExecutionPayload = Payload<Dynamic>;
- 
-class Payload<T>
+
+abstract Payload<T>( {data: T, type: ClassRef<T>, name: MappingName, className: ClassName} ) 
 {
-    var _data 		: T;
-    var _type 		: ClassRef<T>;
-    var _className 	: ClassName;
-    var _name 		: MappingName;
-	
-    public function new( data : T, type : ClassRef<T> = null, ?name : MappingName )
-    {
-        if ( data == null ) throw new NullPointerException( "ExecutionPayload data can't be null" );
-        this._data 	= data;
-		if ( type != null ) this._type 	= type;
-        this._name = '' + name;
-    }
+	public function new( data: T, type: ClassRef<T> = null, ?name: MappingName )
+		this = { data: data, type: type, name: '' + name, className: null };
+		
+	public function getData() return this.data;
 
-    public function getData() return this._data;
-
-    public function getType() return this._type == null ? Type.getClass( this._data ) : this._type;
+    public function getType() return this.type == null ? Type.getClass( this.data ) : this.type;
 
 	/**
-	 * 
 	 * @return 	null when withClassName was not called
 	 */
-	public function getClassName() return this._className;
+	public function getClassName() return this.className;
 
-    public function getName() return this._name;
+    public function getName() return this.name;
 
     public function withName( name : MappingName ) : Payload<T>
     {
-        this._name = name;
-        return this;
+        this.name = name;
+        return cast this;
     }
 	
 	public function withClassName( className : ClassName ) : Payload<T>
     {
-        this._className = ('' + className).split( " " ).join( '' );
-        return this;
+        this.className = ('' + className).split( " " ).join( '' );
+        return cast this;
     }
 }

@@ -37,14 +37,6 @@ class ExecutionPayloadTest
 		Assert.isNull( this._executionPayload.getClassName(), "class name should be null when it's not setted through accessor" );
 	}
 	
-	#if !php
-	@Test( "Test constructor null exception" )
-    public function testConstructorNullException() : Void
-    {
-        Assert.constructorCallThrows( NullPointerException, ExecutionPayload, [ null ], "constructor should throw NullPointerException" );
-    }
-	#end
-	
 	@Test( "Test overwriting name property" )
     public function testOverwritingName() : Void
     {

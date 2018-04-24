@@ -21,48 +21,23 @@ class Payload<T>
 	
     public function new( data : T, type : ClassRef<T> = null, ?name : MappingName )
     {
-        if ( data == null )
-        {
-            throw new NullPointerException( "ExecutionPayload data can't be null" );
-        }
-
+        if ( data == null ) throw new NullPointerException( "ExecutionPayload data can't be null" );
         this._data 	= data;
-		
-		if ( type != null )
-		{
-			this._type 	= type;
-		}
-		else
-		{
-			this._type 	= Type.getClass( this._data );
-		}
-        
+		if ( type != null ) this._type 	= type;
         this._name = '' + name;
     }
 
-    public function getData() : T
-    {
-        return this._data;
-    }
+    public function getData() return this._data;
 
-    public function getType() : ClassRef<T>
-    {
-        return this._type;
-    }
-	
+    public function getType() return this._type == null ? Type.getClass( this._data ) : this._type;
+
 	/**
 	 * 
 	 * @return 	null when withClassName was not called
 	 */
-	public function getClassName() : ClassName
-    {
-        return this._className;
-    }
+	public function getClassName() return this._className;
 
-    public function getName() : MappingName
-    {
-        return this._name;
-    }
+    public function getName() return this._name;
 
     public function withName( name : MappingName ) : Payload<T>
     {

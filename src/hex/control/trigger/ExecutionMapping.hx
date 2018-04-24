@@ -13,11 +13,8 @@ class ExecutionMapping<ResultType>
 	var _commandClass 		: Class<Command<ResultType>>;
 	var _guards 			: Array<Class<IGuard>>;
 	var _payloads 			: Array<ExecutionPayload>;
-	
 	var _handlers 			: Array<Callback<Outcome<ResultType, Error>>>;
-	/*var _completeHandlers 	: Array<ResultType->Void>;
-	var _failHandlers 		: Array<Error->Void>;
-    var _cancelHandlers 	: Array<Void->Void>;*/
+
 
 	public function new( commandClass : Class<Command<ResultType>> ) 
 	{
@@ -93,68 +90,4 @@ class ExecutionMapping<ResultType>
         this._handlers.push( handler );
         return this;
     }
-
-    /*public function getCompleteHandlers() : Array<Callback<Outcome<ResultType, Error>>>
-		return this._handlers;
-
-	@:isVar public var hasCompleteHandler( get, null ) : Bool;
-	function get_hasCompleteHandler() : Bool
-	{
-		return this._completeHandlers != null;
-	}
-
-    public function withCompleteHandler( handler : ResultType->Void ) : ExecutionMapping<ResultType> 
-    {
-        if ( this._completeHandlers == null )
-        {
-            this._completeHandlers = [];
-        }
-
-        this._completeHandlers.push( handler );
-        return this;
-    }
-
-    public function getFailHandlers() : Array<Error->Void>
-    {
-        return this._failHandlers;
-    }
-	
-	@:isVar public var hasFailHandler( get, null ) : Bool;
-	function get_hasFailHandler() : Bool
-	{
-		return this._failHandlers != null;
-	}
-
-    public function withFailHandler( handler : Error->Void ) : ExecutionMapping<ResultType> 
-    {
-        if ( this._failHandlers == null )
-        {
-            this._failHandlers = [];
-        }
-
-        this._failHandlers.push( handler );
-        return this;
-    }
-
-    public function getCancelHandlers() : Array<Void->Void>
-    {
-        return this._cancelHandlers;
-    }
-	
-	@:isVar public var hasCancelHandler( get, null ) : Bool;
-	function get_hasCancelHandler() : Bool
-	{
-		return this._cancelHandlers != null;
-	}
-
-    public function withCancelHandler( handler : Void->Void ) : ExecutionMapping<ResultType> 
-    {
-        if ( this._cancelHandlers == null )
-        {
-            this._cancelHandlers = [];
-        }
-
-        this._cancelHandlers.push( handler );
-        return this;
-    }*/
 }

@@ -11,8 +11,6 @@ interface ICommand
 {
 	function execute() : Void;
 
-    function getResult() : Array<Dynamic>;
-
     function getLogger() : ILogger;
 	
     function getOwner() : IContextModule;

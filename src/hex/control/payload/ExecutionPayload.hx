@@ -1,26 +1,32 @@
 package hex.control.payload;
 
+import hex.di.ClassName;
+import hex.di.ClassRef;
+import hex.di.MappingName;
 import hex.error.NullPointerException;
 
 /**
  * ...
  * @author Francis Bourre
  */
-class ExecutionPayload
+
+typedef ExecutionPayload = Payload<Dynamic>;
+ 
+class Payload<T>
 {
-    var _data 		: Dynamic;
-    var _type 		: Class<Dynamic>;
-    var _className 	: String;
-    var _name 		: String;
+    var _data 		: T;
+    var _type 		: ClassRef<T>;
+    var _className 	: ClassName;
+    var _name 		: MappingName;
 	
-    public function new( data : Dynamic, type : Class<Dynamic> = null, name : String = "" )
+    public function new( data : T, type : ClassRef<T> = null, ?name : MappingName )
     {
         if ( data == null )
         {
             throw new NullPointerException( "ExecutionPayload data can't be null" );
         }
 
-        this._data 		= data;
+        this._data 	= data;
 		
 		if ( type != null )
 		{
@@ -31,15 +37,15 @@ class ExecutionPayload
 			this._type 	= Type.getClass( this._data );
 		}
         
-        this._name 		= name;
+        this._name = '' + name;
     }
 
-    public function getData() : Dynamic
+    public function getData() : T
     {
         return this._data;
     }
 
-    public function getType() : Class<Dynamic>
+    public function getType() : ClassRef<T>
     {
         return this._type;
     }
@@ -48,26 +54,25 @@ class ExecutionPayload
 	 * 
 	 * @return 	null when withClassName was not called
 	 */
-	public function getClassName() : String
+	public function getClassName() : ClassName
     {
         return this._className;
     }
 
-    public function getName() : String
+    public function getName() : MappingName
     {
         return this._name;
     }
 
-    public function withName( name : String ) : ExecutionPayload
+    public function withName( name : MappingName ) : Payload<T>
     {
         this._name = name;
         return this;
     }
 	
-	public function withClassName( className : String ) : ExecutionPayload
+	public function withClassName( className : ClassName ) : Payload<T>
     {
-        this._type 	= Type.resolveClass( className.split( '<' )[ 0 ] );
-        this._className = className.split( " " ).join( '' );
+        this._className = ('' + className).split( " " ).join( '' );
         return this;
     }
 }

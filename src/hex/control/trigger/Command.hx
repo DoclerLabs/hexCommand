@@ -144,9 +144,4 @@ class Command<ResultType>
 	{
 		this._owner = owner;
 	}
-	
-	public function getResult() : Array<Dynamic>
-	{
-		return null;
-	}
 }

@@ -2,6 +2,9 @@ package hex.control.trigger;
 
 import hex.control.guard.IGuard;
 import hex.control.payload.ExecutionPayload;
+import hex.di.ClassName;
+import hex.di.ClassRef;
+import hex.di.MappingName;
 using tink.CoreApi;
 
 /**
@@ -59,13 +62,12 @@ class ExecutionMapping<ResultType>
         return this._payloads;
     }
 	
-	public function asPayload( value : Dynamic, type : Class<Dynamic>, name = '', className : String = '' ) : ExecutionMapping<ResultType> 
+	public function asPayload<T>( data : T, type : ClassRef<T>, ?name : MappingName, ?className : ClassName ) : ExecutionMapping<ResultType> 
     {
-		return className == '' ? this.withPayload( new ExecutionPayload( value, type, name ) ):
-			this.withPayload( new ExecutionPayload( value, type, name ).withClassName( className ) );
+		return this.withPayload( { data: data, type: type, name: name, className: className } );
 	}
 
-    public function withPayload( payload : ExecutionPayload ) : ExecutionMapping<ResultType> 
+    public function withPayload<T>( payload : Payload<T> ) : ExecutionMapping<ResultType> 
     {
         if ( this._payloads == null )
         {

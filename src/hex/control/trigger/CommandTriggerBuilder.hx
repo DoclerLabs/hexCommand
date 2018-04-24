@@ -135,7 +135,8 @@ class CommandTriggerBuilder
 							func.expr = macro 
 							{
 								var injections : Array<{value: Dynamic, className: String, mapName: String}> = $a { arguments };
-								var payloads = [ for ( injected in injections ) new hex.control.payload.ExecutionPayload( injected.value, null, injected.mapName ).withClassName( injected.className ) ];
+								//var payloads = [ for ( injected in injections ) new hex.control.payload.ExecutionPayload( injected.value, null, injected.mapName ).withClassName( injected.className ) ];
+								var payloads = [ for ( injected in injections ) { data: injected.value, type: null, name: injected.mapName, className: injected.className } ];
 								
 								this.injector.mapClassNameToValue( 'Array<hex.control.payload.ExecutionPayload>', payloads );
 								for ( injected in injections ) this.injector.mapClassNameToValue( injected.className, injected.value, injected.mapName );

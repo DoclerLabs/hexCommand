@@ -1,5 +1,6 @@
 package hex.control.payload;
 
+import hex.di.ClassName;
 import hex.di.IBasicInjector;
 import hex.error.PrivateConstructorException;
 
@@ -23,14 +24,14 @@ class PayloadUtil
     {
         for ( payload in payloads ) 
 		{
-			var className = payload.getClassName();
+			var className : ClassName = payload;
 			if ( className != null )
 			{
-				injector.mapClassNameToValue( payload.getClassName(), payload.getData(), payload.getName() );
+				injector.mapClassNameToValue( className, payload.getData(), payload );
 			}
 			else
 			{
-				injector.mapToValue( payload.getType(), payload.getData(), payload.getName() );
+				injector.mapToValue( payload, payload.getData(), payload );
 			}
 		}
     }
@@ -43,14 +44,14 @@ class PayloadUtil
     {
         for ( payload in payloads ) 
 		{
-			var className = payload.getClassName();
+			var className : ClassName = payload;
 			if ( className != null )
 			{
-				injector.unmapClassName( payload.getClassName(), payload.getName() );
+				injector.unmapClassName( className, payload );
 			}
 			else 
 			{
-				injector.unmap( payload.getType(), payload.getName() );
+				injector.unmap( payload, payload );
 			}
 		}
     }

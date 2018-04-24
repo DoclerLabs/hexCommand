@@ -95,7 +95,7 @@ private class MockDependencyInjector implements IDependencyInjector
 		return false;
 	}
 	
-	public function hasDirectMapping<T>( type : ClassRef<T>, ?name : MappingName) : Bool
+	public function hasDirectMapping<T>( type : ClassRef<T>, ?name : MappingName ) : Bool
 	{
 		return false;
 	}

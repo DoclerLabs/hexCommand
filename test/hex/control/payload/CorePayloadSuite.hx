@@ -7,5 +7,5 @@ package hex.control.payload;
 class CorePayloadSuite
 {
 	@Suite( "Payload" )
-    public var list : Array<Class<Dynamic>> = [ ExecutionPayloadTest/*, PayloadUtilTest*/ ];
+    public var list : Array<Class<Dynamic>> = [ ExecutionPayloadTest, PayloadUtilTest ];
 }

@@ -55,8 +55,8 @@ class MockMacroCommandWithPayloadOverriding extends MacroCommand<String>
 		MockMacroCommandWithPayloadOverriding.command = this;
 		
 		this.add( MockCommand )
-			.withPayload( new ExecutionPayload( 13 ).withClassName( 'Int' ) )
-			.withPayload( new ExecutionPayload( 'override', String, 'name2' ) );
+			.withPayload( {data:13, type:null, name:null, className: 'Int'} )
+			.withPayload( {data: 'override', type: String, name:'name2', className: null} );
 			
 		this.add( AnotherMockCommand );
 	}

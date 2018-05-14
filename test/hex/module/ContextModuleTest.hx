@@ -7,16 +7,11 @@ import hex.di.IBasicInjector;
 import hex.di.IDependencyInjector;
 import hex.di.Injector;
 import hex.di.error.MissingMappingException;
-import hex.domain.DomainExpert;
-import hex.error.Exception;
 import hex.error.IllegalStateException;
-import hex.event.MessageType;
 import hex.log.ILogger;
-import hex.module.IModule;
-import hex.service.IService;
-import hex.service.ServiceConfiguration;
 import hex.unittest.assertion.Assert;
 
+using tink.CoreApi;
 using hex.di.util.InjectorUtil;
 
 /**
@@ -82,8 +77,6 @@ class ContextModuleTest
 		module.release();
 		Assert.equals( 1, module.releaseCallCount, "release should have been called once" );
 		Assert.isTrue( module.isReleased, "'isReleased' should return true" );
-		
-		Assert.isNull( DomainExpert.getInstance().getDomainFor( module ), "domain should be null" );
 		Assert.isNull( module.getLogger(), "logger should be null" );
 		
 		Assert.methodCallThrows( IllegalStateException, module, module.release, [], "'release' called twice should throw 'IllegalStateException'" );
@@ -95,7 +88,7 @@ class ContextModuleTest
 		var module : MockModuleForTestigInjector = new MockModuleForTestigInjector();
 		module.getInjector().mapToValue( ContextModuleTest, this );
 		Assert.equals ( this, module.get( ContextModuleTest ), "'_get' method call should return mapping result from internal module's injector" );
-		Assert.methodCallThrows ( MissingMappingException, module, module.get, [ Exception ], "_get' method call should throw 'MissingMappingException' when the mapping is missing" );
+		Assert.methodCallThrows ( MissingMappingException, module, module.get, [ Error ], "_get' method call should throw 'MissingMappingException' when the mapping is missing" );
 	}
 	
 	@Test( "Test get accessor with name" )
@@ -203,20 +196,20 @@ private class MockModuleListener
 	public var onInitCallCount 		: UInt = 0;
 	public var onReleaseCallCount 	: UInt = 0;
 	
-	public var moduleReference 		: IModule;
+	public var moduleReference 		: IContextModule;
 	
 	public function new()
 	{
 		
 	}
 	
-	public function onInit( moduleReference : IModule ) : Void
+	public function onInit( moduleReference : IContextModule ) : Void
 	{
 		this.onInitCallCount++;
 		this.moduleReference = moduleReference;
 	}
 	
-	public function onRelease( moduleReference : IModule ) : Void
+	public function onRelease( moduleReference : IContextModule ) : Void
 	{
 		this.onReleaseCallCount++;
 		this.moduleReference = moduleReference;
@@ -324,38 +317,5 @@ private class MockStatefulConfig implements IStatefulConfig
 	{
 		this.injector 		= injector;
 		this.module 		= module;
-	}
-}
-
-private class MockService implements IService
-{
-	public function createConfiguration() : Void 
-	{
-		
-	}
-	
-	public function addHandler( messageType : MessageType, callback : Dynamic ) : Bool 
-	{
-		return false;
-	}
-	
-	public function removeHandler( messageType : MessageType, callback : Dynamic ) : Bool 
-	{
-		return false;
-	}
-	
-	public function getConfiguration() : ServiceConfiguration 
-	{
-		return null;
-	}
-	
-	public function setConfiguration( configuration : ServiceConfiguration ) : Void 
-	{
-		
-	}
-	
-	public function removeAllListeners() : Void 
-	{
-		
 	}
 }

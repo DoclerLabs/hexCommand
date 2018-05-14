@@ -2,7 +2,8 @@ package hex.control.trigger.mock;
 
 import hex.control.MockEnum;
 import hex.control.trigger.Command;
-import hex.error.Exception;
+
+using tink.CoreApi;
 
 /**
  * ...
@@ -52,6 +53,6 @@ class MockCommandFailing extends Command<String>
 	{
 		MockCommandFailing.executionCount++;
 		MockCommandFailing.command = this;
-		this._fail( new Exception( 'message' ) );
+		this._fail( new TypedError( 'message' ) );
 	}
 }

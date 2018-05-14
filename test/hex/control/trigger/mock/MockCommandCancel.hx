@@ -2,7 +2,6 @@ package hex.control.trigger.mock;
 
 import hex.control.MockEnum;
 import hex.control.trigger.Command;
-import hex.error.Exception;
 
 /**
  * ...

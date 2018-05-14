@@ -1,19 +1,12 @@
 package hex.control.guard;
 
-import hex.di.IBasicInjector;
-import hex.error.PrivateConstructorException;
-
 /**
  * ...
  * @author Francis Bourre
  */
 class GuardUtil
 {
-	/** @private */
-	function new() 
-	{
-		throw new PrivateConstructorException();
-	}
+	/** @private */ function new() throw new hex.error.PrivateConstructorException();
 	
 	/**
 	 * Approve guards
@@ -21,7 +14,7 @@ class GuardUtil
 	 * @param	injector
 	 * @return
 	 */
-    static public function guardsApprove( ?guards : Array<Dynamic>, ?injector : IBasicInjector ) : Bool
+    static public function guardsApprove( ?guards : Array<Dynamic>, ?injector : hex.di.IBasicInjector ) : Bool
     {
         if ( guards != null )
         {

@@ -1,5 +1,6 @@
 package hex.control.trigger;
 
+import hex.di.annotation.IAutoInject;
 import hex.di.IDependencyInjector;
 import hex.di.IInjectorContainer;
 import hex.module.IContextModule;
@@ -10,7 +11,7 @@ import hex.module.IContextModule;
 #if !macro
 @:autoBuild( hex.control.trigger.CommandTriggerBuilder.build() )
 #end
-interface ICommandTrigger extends IInjectorContainer
+interface ICommandTrigger extends IAutoInject
 {
 	var module     : IContextModule;
     var injector   : IDependencyInjector;

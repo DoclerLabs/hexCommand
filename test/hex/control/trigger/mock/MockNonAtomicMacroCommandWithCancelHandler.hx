@@ -2,7 +2,7 @@ package hex.control.trigger.mock;
 
 import hex.control.MockEnum;
 import hex.control.trigger.MacroCommand;
-import hex.error.Exception;
+using tink.CoreApi;
 
 /**
  * ...
@@ -60,23 +60,23 @@ class MockNonAtomicMacroCommandWithCancelHandler extends MacroCommand<String>
 		MockNonAtomicMacroCommandWithCancelHandler.command = this;
 		
 		MockNonAtomicMacroCommandWithCancelHandler.completeCallCount = 0;
-		this.add( MockCommandCancel ).withCompleteHandler( _whenComplete ).withFailHandler( _whenFail ).withCancelHandler( _whenCancel );
-		this.add( MockCommandCancel ).withCompleteHandler( _whenComplete ).withFailHandler( _whenFail ).withCancelHandler( _whenCancel );
+		this.add( MockCommandCancel ).withHandler( _handle );
+		this.add( MockCommandCancel ).withHandler( _handle );
 	}
 	
-	function _whenComplete( result : String ) : Void
+	function _handle( outcome ) : Void
 	{
-		MockNonAtomicMacroCommandWithCancelHandler.completeCallCount++;
-	}
-	
-	function _whenFail( error : Exception ) : Void
-	{
-		MockNonAtomicMacroCommandWithCancelHandler.failCallCount++;
-	}
-	
-	function _whenCancel() : Void
-	{
-		MockNonAtomicMacroCommandWithCancelHandler.cancelCallCount++;
-		this.add( AnotherMockCommand ).withCompleteHandler( _whenComplete ).withFailHandler( _whenFail ).withCancelHandler( _whenCancel );
+		switch( outcome : Outcome<String, Error> )
+		{
+			case Success( result ): completeCallCount++;
+			case Failure( error ):
+				if ( error.code == Command.OperationCancelled ) 
+				{
+					cancelCallCount++;
+					this.add( AnotherMockCommand ).withHandler( _handle );
+					
+				} else failCallCount++;
+				
+		}
 	}
 }

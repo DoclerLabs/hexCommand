@@ -2,7 +2,7 @@ package hex.control.trigger.mock;
 
 import hex.control.MockEnum;
 import hex.control.trigger.MacroCommand;
-import hex.error.Exception;
+using tink.CoreApi;
 
 /**
  * ...
@@ -58,22 +58,19 @@ class MockMacroCommandWithCancelHandler extends MacroCommand<String>
 		MockMacroCommandWithCancelHandler.command = this;
 		
 		MockMacroCommandWithCancelHandler.completeCallCount = 0;
-		this.add( MockCommandCancel ).withCompleteHandler( _whenComplete ).withFailHandler( _whenFail ).withCancelHandler( _whenCancel );
-		this.add( AnotherMockCommand ).withCompleteHandler( _whenComplete ).withFailHandler( _whenFail ).withCancelHandler( _whenCancel );
+		this.add( MockCommandCancel ).withHandler( _handle );
+		this.add( AnotherMockCommand ).withHandler( _handle );
 	}
 	
-	function _whenComplete( result : String ) : Void
+	function _handle( outcome ) : Void
 	{
-		MockMacroCommandWithCancelHandler.completeCallCount++;
-	}
-	
-	function _whenFail( error : Exception ) : Void
-	{
-		MockMacroCommandWithCancelHandler.failCallCount++;
-	}
-	
-	function _whenCancel() : Void
-	{
-		MockMacroCommandWithCancelHandler.cancelCallCount++;
+		switch( outcome : Outcome<String, Error> )
+		{
+			case Success( result ): completeCallCount++;
+			case Failure( error ):
+				if ( error.code == Command.OperationCancelled ) cancelCallCount++;
+					else failCallCount++;
+				
+		}
 	}
 }

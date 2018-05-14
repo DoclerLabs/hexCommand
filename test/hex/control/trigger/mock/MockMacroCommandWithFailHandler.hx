@@ -2,7 +2,7 @@ package hex.control.trigger.mock;
 
 import hex.control.MockEnum;
 import hex.control.trigger.MacroCommand;
-import hex.error.Exception;
+using tink.CoreApi;
 
 /**
  * ...
@@ -47,10 +47,7 @@ class MockMacroCommandWithFailHandler extends MacroCommand<String>
 	@Inject
 	public var pEnum : MockEnum;
 	
-	public function new()
-	{
-		super();
-	}
+	public function new() super();
 	
 	override function _prepare():Void 
 	{
@@ -58,22 +55,18 @@ class MockMacroCommandWithFailHandler extends MacroCommand<String>
 		MockMacroCommandWithFailHandler.command = this;
 		
 		MockMacroCommandWithFailHandler.completeCallCount = 0;
-		this.add( MockCommandFailing ).withCompleteHandler( _whenComplete ).withFailHandler( _whenFail ).withCancelHandler( _whenCancel );
-		this.add( AnotherMockCommand ).withCompleteHandler( _whenComplete ).withFailHandler( _whenFail ).withCancelHandler( _whenCancel );
+		this.add( MockCommandFailing ).withHandler( _handle );
+		this.add( AnotherMockCommand ).withHandler( _handle );
 	}
 	
-	function _whenComplete( result : String ) : Void
+	function _handle( outcome ) : Void
 	{
-		MockMacroCommandWithFailHandler.completeCallCount++;
-	}
-	
-	function _whenFail( error : Exception ) : Void
-	{
-		MockMacroCommandWithFailHandler.failCallCount++;
-	}
-	
-	function _whenCancel() : Void
-	{
-		MockMacroCommandWithFailHandler.cancelCallCount++;
+		switch( outcome : Outcome<String, Error> )
+		{
+			case Success( result ): completeCallCount++;
+			case Failure( error ):
+				if ( error.code == Command.OperationCancelled ) cancelCallCount++;
+					else failCallCount++;
+		}
 	}
 }

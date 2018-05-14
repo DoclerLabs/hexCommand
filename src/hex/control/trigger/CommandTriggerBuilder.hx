@@ -7,7 +7,6 @@ import haxe.macro.Expr.Access;
 import haxe.macro.Expr.Field;
 import haxe.macro.Expr.Position;
 import hex.annotation.AnnotationReplaceBuilder;
-import hex.control.payload.ExecutionPayload;
 import hex.control.trigger.Command;
 import hex.di.IDependencyInjector;
 import hex.module.IContextModule;
@@ -122,7 +121,7 @@ class CommandTriggerBuilder
 								var fields = 
 								[
 									{field: "value", expr: macro $i { arg.name }}, 
-									{field: "className", expr: macro $v { typeName }},
+									{field: "className", expr: macro $v { typeName.split(' ').join('') }},
 									{field: "mapName", expr: macro $v { mapName }}
 								];
 								arguments.push( { expr: EObjectDecl( fields ), pos: Context.currentPos() } );
@@ -135,25 +134,22 @@ class CommandTriggerBuilder
 						{
 							func.expr = macro 
 							{
-								var injections : Array<{value:Dynamic, className:String, mapName:String}> = $a { arguments };
-								var payloads = [];
-								for ( injected in injections )
-								{
-									payloads.push( new hex.control.payload.ExecutionPayload( injected.value, null, injected.mapName ).withClassName( injected.className ) );
-								}
-
-								this.injector.mapClassNameToValue( 'Array<hex.control.payload.ExecutionPayload>', payloads );
+								var injections : Array<{value: Dynamic, className: String, mapName: String}> = $a { arguments };
+								//var payloads = [ for ( injected in injections ) new hex.control.payload.ExecutionPayload( injected.value, null, injected.mapName ).withClassName( injected.className ) ];
+								var payloads = [ for ( injected in injections ) { data: injected.value, type: null, name: injected.mapName, className: injected.className } ];
 								
-								hex.control.payload.PayloadUtil.mapPayload( payloads, this.injector );
+								this.injector.mapClassNameToValue( 'Array<hex.control.payload.ExecutionPayload>', payloads );
+								for ( injected in injections ) this.injector.mapClassNameToValue( injected.className, injected.value, injected.mapName );
 								var command = this.injector.instantiateUnmapped( $p { className } );
-								hex.control.payload.PayloadUtil.unmapPayload( payloads, this.injector );
+								//command.preExecute( this.injector, payloads );
+								for ( injected in injections ) this.injector.unmapClassName( injected.className, injected.mapName );
 								
 								command.setOwner( this.module );
 								command.execute();
 								
 								this.injector.unmapClassName( 'Array<hex.control.payload.ExecutionPayload>' );
-								
-								return command;
+
+								return command.promise;
 							};
 						}
 						else
@@ -161,15 +157,14 @@ class CommandTriggerBuilder
 							func.expr = macro 
 							{
 								var injections : Array<{value: Dynamic, className: String, mapName: String}> = $a { arguments };
-								var payloads = [ for ( injected in injections ) new hex.control.payload.ExecutionPayload( injected.value, null, injected.mapName ).withClassName( injected.className ) ];
-								hex.control.payload.PayloadUtil.mapPayload( payloads, this.injector );
+								for ( injected in injections ) this.injector.mapClassNameToValue( injected.className, injected.value, injected.mapName );
 								var command = this.injector.instantiateUnmapped( $p { className } );
-								hex.control.payload.PayloadUtil.unmapPayload( payloads, this.injector );
+								for ( injected in injections ) this.injector.unmapClassName( injected.className, injected.mapName );
 								
 								command.setOwner( this.module );
 								command.execute();
 
-								return command;
+								return command.promise;
 							};
 						}
 					}

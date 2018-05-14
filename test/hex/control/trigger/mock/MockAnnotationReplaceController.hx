@@ -1,9 +1,11 @@
 package hex.control.trigger.mock;
+
 import hex.annotation.IAnnotationReplace;
-import hex.control.async.Expect;
 import hex.control.async.Nothing;
 import hex.control.trigger.ICommandTrigger;
 import hex.control.trigger.MockCommandClassWithoutParameters;
+
+using tink.CoreApi;
 
 /**
  * ...
@@ -22,10 +24,10 @@ class MockAnnotationReplaceController implements ICommandTrigger implements IAnn
 	public var mockInjection:MockInjectee;
 	
 	@Map( hex.control.trigger.MockCommandClassWithoutParameters )
-	public function printFQCN() : Expect<Nothing>;
+	public function printFQCN() : Promise<Nothing>;
 	
 	@Map( MockCommandClassWithoutParameters )
-	public function print() : Expect<Nothing>;
+	public function print() : Promise<Nothing>;
 	
 }
 

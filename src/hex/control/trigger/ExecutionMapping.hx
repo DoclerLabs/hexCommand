@@ -2,7 +2,10 @@ package hex.control.trigger;
 
 import hex.control.guard.IGuard;
 import hex.control.payload.ExecutionPayload;
-import hex.error.Exception;
+import hex.di.ClassName;
+import hex.di.ClassRef;
+import hex.di.MappingName;
+using tink.CoreApi;
 
 /**
  * ...
@@ -13,10 +16,8 @@ class ExecutionMapping<ResultType>
 	var _commandClass 		: Class<Command<ResultType>>;
 	var _guards 			: Array<Class<IGuard>>;
 	var _payloads 			: Array<ExecutionPayload>;
-	
-	var _completeHandlers 	: Array<ResultType->Void>;
-	var _failHandlers 		: Array<Exception->Void>;
-    var _cancelHandlers 	: Array<Void->Void>;
+	var _handlers 			: Array<Callback<Outcome<ResultType, Error>>>;
+
 
 	public function new( commandClass : Class<Command<ResultType>> ) 
 	{
@@ -61,13 +62,12 @@ class ExecutionMapping<ResultType>
         return this._payloads;
     }
 	
-	public function asPayload( value : Dynamic, type : Class<Dynamic>, name = '', className : String = '' ) : ExecutionMapping<ResultType> 
+	public function asPayload<T>( data : T, type : ClassRef<T>, ?name : MappingName, ?className : ClassName ) : ExecutionMapping<ResultType> 
     {
-		return className == '' ? this.withPayload( new ExecutionPayload( value, type, name ) ):
-			this.withPayload( new ExecutionPayload( value, type, name ).withClassName( className ) );
+		return this.withPayload( { data: data, type: type, name: name, className: className } );
 	}
 
-    public function withPayload( payload : ExecutionPayload ) : ExecutionMapping<ResultType> 
+    public function withPayload<T>( payload : Payload<T> ) : ExecutionMapping<ResultType> 
     {
         if ( this._payloads == null )
         {
@@ -77,70 +77,19 @@ class ExecutionMapping<ResultType>
         this._payloads.push( payload );
         return this;
     }
-
-    public function getCompleteHandlers() : Array<ResultType->Void>
+	
+	public function getHandlers() : Array<Callback<Outcome<ResultType, Error>>>
     {
-        return this._completeHandlers;
-    }
-
-	@:isVar public var hasCompleteHandler( get, null ) : Bool;
-	function get_hasCompleteHandler() : Bool
-	{
-		return this._completeHandlers != null;
-	}
-
-    public function withCompleteHandler( handler : ResultType->Void ) : ExecutionMapping<ResultType> 
-    {
-        if ( this._completeHandlers == null )
-        {
-            this._completeHandlers = [];
-        }
-
-        this._completeHandlers.push( handler );
-        return this;
-    }
-
-    public function getFailHandlers() : Array<Exception->Void>
-    {
-        return this._failHandlers;
+        return this._handlers;
     }
 	
-	@:isVar public var hasFailHandler( get, null ) : Bool;
-	function get_hasFailHandler() : Bool
-	{
-		return this._failHandlers != null;
-	}
-
-    public function withFailHandler( handler : Exception->Void ) : ExecutionMapping<ResultType> 
-    {
-        if ( this._failHandlers == null )
-        {
-            this._failHandlers = [];
-        }
-
-        this._failHandlers.push( handler );
-        return this;
-    }
-
-    public function getCancelHandlers() : Array<Void->Void>
-    {
-        return this._cancelHandlers;
-    }
+	@:isVar public var hasHandler( get, null ) : Bool;
+	function get_hasHandler() : Bool return this._handlers != null;
 	
-	@:isVar public var hasCancelHandler( get, null ) : Bool;
-	function get_hasCancelHandler() : Bool
-	{
-		return this._cancelHandlers != null;
-	}
-
-    public function withCancelHandler( handler : Void->Void ) : ExecutionMapping<ResultType> 
+	public function withHandler( handler : Callback<Outcome<ResultType, Error>> ) : ExecutionMapping<ResultType> 
     {
-        if ( this._cancelHandlers == null )
-        {
-            this._cancelHandlers = [];
-        }
-
-        this._cancelHandlers.push( handler );
+        if ( this._handlers == null ) this._handlers = [];
+        this._handlers.push( handler );
         return this;
     }
 }

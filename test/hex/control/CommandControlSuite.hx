@@ -1,8 +1,5 @@
 package hex.control;
 
-import hex.control.guard.CoreGuardSuite;
-import hex.control.trigger.CommandTriggerSuite;
-
 /**
  * ...
  * @author Francis Bourre
@@ -12,7 +9,8 @@ class CommandControlSuite
 	@Suite( "Control" )
     public var list : Array<Class<Dynamic>> = 
 	[ 
-		CoreGuardSuite,
-		CommandTriggerSuite
+		hex.control.guard.CoreGuardSuite,
+		hex.control.payload.CorePayloadSuite,
+		hex.control.trigger.CommandTriggerSuite
 	];
 }

@@ -1,7 +1,7 @@
 package hex.control.trigger.mock;
 
 import hex.control.trigger.MacroCommand;
-import hex.error.Exception;
+using tink.CoreApi;
 
 /**
  * ...
@@ -16,27 +16,38 @@ class GetUserVOMacro extends MacroCommand<MockUserVO>
 	
 	override function _prepare():Void 
 	{
-		this.add( MockGetUsername ).withCompleteHandler( this._onUsername );
-		this.add( MockGetUserAge ).withCompleteHandler( this._onAge );
+		this.add( MockGetUsername ).withHandler( this._onUsername );
+		this.add( MockGetUserAge ).withHandler( this._onAge );
 		this._setResult( new MockUserVO() );
 	}
 	
-	function _onUsername( username : String ) : Void
+	function _onUsername( outcome ) : Void
 	{
-		this._result.username = username;
+		switch( outcome )
+		{
+			case Success( username ): this._result.username = username;
+			case _:
+		}
+		
 	}
 	
-	function _onAge( age : UInt ) : Void
+	function _onAge( outcome ) : Void
 	{
-		this._result.age = age;
-		if ( age >= 18 ) 
+		switch( outcome )
 		{
-			this.add( MockGetUserPrivilege ).withCompleteHandler( this._onPrivilege );
+			case Success( age ):
+				this._result.age = age;
+				if ( age >= 18 ) this.add( MockGetUserPrivilege ).withHandler( this._onPrivilege );
+			case _:
 		}
 	}
 	
-	function _onPrivilege( isAdmin : Bool ) : Void
+	function _onPrivilege( outcome ) : Void
 	{
-		this._result.isAdmin = isAdmin;
+		switch( outcome )
+		{
+			case Success( isAdmin ): this._result.isAdmin = isAdmin;
+			case _:
+		}
 	}
 }

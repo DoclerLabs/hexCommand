@@ -1,9 +1,10 @@
 package hex.control.trigger.mock;
 
 import hex.collection.Locator;
-import hex.control.async.Expect;
 import hex.control.async.Nothing;
 import hex.control.trigger.ICommandTrigger;
+
+using tink.CoreApi;
 
 /**
  * ...
@@ -16,7 +17,7 @@ class MockController
 	public function new(){}
 	
 	@Map( hex.control.trigger.MockCommandClassWithoutParameters )
-	public function print() : Expect<Nothing>;
+	public function print() : Promise<Nothing>;
 	
 	@Map( hex.control.trigger.MockCommandClassWithParameters )
 	public function say( 
@@ -24,7 +25,7 @@ class MockController
 																			sender 		: CommandTriggerTest, 
 							@Ignore 										anotherText : String,
 							@Type( 'hex.collection.ILocator<String,Bool>' ) locator 	: Locator<String, Bool> 
-						) : Expect<String>;
+						) : Promise<String>;
 
 	public function sum( a : Int, b : Int ) : Int 
 	{ 

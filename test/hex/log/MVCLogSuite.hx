@@ -7,8 +7,5 @@ package hex.log;
 class MVCLogSuite 
 {
 	@Suite( "Logging" )
-    public var list : Array<Class<Dynamic>> = [
-		DomainLoggerProviderTest,
-		DomainFilterTest
-	];
+    public var list : Array<Class<Dynamic>> = [ LoggerProviderTest ];
 }

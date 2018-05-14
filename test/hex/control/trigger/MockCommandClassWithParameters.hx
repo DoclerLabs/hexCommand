@@ -15,7 +15,7 @@ class MockCommandClassWithParameters extends Command<String>
 	public static var message 		: String;
 	public static var ignored 		: String;
 	
-	@Inject('text')
+	@Inject( 'text' )
 	public var textArg : String;
 	
 	@Inject

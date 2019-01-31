@@ -2,7 +2,8 @@ package hex.control.payload;
 
 import hex.di.ClassName;
 import hex.di.IBasicInjector;
-import hex.error.PrivateConstructorException;
+
+using hex.error.Error;
 
 /**
  * ...
@@ -10,11 +11,7 @@ import hex.error.PrivateConstructorException;
  */
 class PayloadUtil
 {
-	/** @private */
-	function new() 
-	{
-		throw new PrivateConstructorException();
-	}
+	/** @private */ function new() throw new PrivateConstructorException();
 	
 	/**
 	 * Map payloads

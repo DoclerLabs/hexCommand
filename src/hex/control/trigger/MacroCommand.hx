@@ -4,10 +4,9 @@ import hex.control.guard.GuardUtil;
 import hex.control.payload.ExecutionPayload;
 import hex.control.payload.PayloadUtil;
 import hex.di.IDependencyInjector;
-import hex.error.IllegalStateException;
-import hex.error.VirtualMethodException;
 
 using tink.CoreApi;
+using hex.error.Error;
 
 /**
  * ...

@@ -11,10 +11,11 @@ import hex.di.Injector;
 import hex.di.MappingName;
 import hex.di.provider.LoggerProvider;
 import hex.di.util.InjectorUtil;
-import hex.error.IllegalStateException;
 import hex.log.ILogger;
 import hex.log.LogManager;
 import hex.module.IContextModule;
+
+using hex.error.Error;
 
 /**
  * ...

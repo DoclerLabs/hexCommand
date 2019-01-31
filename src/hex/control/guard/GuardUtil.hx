@@ -1,12 +1,14 @@
 package hex.control.guard;
 
+using hex.error.Error;
+
 /**
  * ...
  * @author Francis Bourre
  */
 class GuardUtil
 {
-	/** @private */ function new() throw new hex.error.PrivateConstructorException();
+	/** @private */ function new() throw new PrivateConstructorException();
 	
 	/**
 	 * Approve guards

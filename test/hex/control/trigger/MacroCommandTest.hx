@@ -5,13 +5,13 @@ import hex.control.payload.PayloadUtil;
 import hex.control.trigger.mock.*;
 import hex.di.IDependencyInjector;
 import hex.di.Injector;
-import hex.error.IllegalStateException;
 import hex.module.ContextModule;
 import hex.module.IContextModule;
 import hex.unittest.assertion.Assert;
 import hex.unittest.runner.MethodRunner;
 
 using tink.CoreApi;
+using hex.error.Error;
 
 /**
  * ...

@@ -4,11 +4,11 @@ import hex.control.async.AsyncResult;
 import hex.control.command.ICommand;
 import hex.di.IDependencyInjector;
 import hex.di.IInjectorContainer;
-import hex.error.VirtualMethodException;
 import hex.log.ILogger;
 import hex.module.IContextModule;
 
 using tink.CoreApi;
+using hex.error.Error;
 /**
  * ...
  * @author Francis Bourre

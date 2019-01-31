@@ -7,11 +7,11 @@ import hex.di.IBasicInjector;
 import hex.di.IDependencyInjector;
 import hex.di.Injector;
 import hex.di.error.MissingMappingException;
-import hex.error.IllegalStateException;
 import hex.log.ILogger;
 import hex.unittest.assertion.Assert;
 
 using tink.CoreApi;
+using hex.error.Error;
 using hex.di.util.InjectorUtil;
 
 /**

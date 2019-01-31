@@ -14,6 +14,7 @@ import hex.util.MacroUtil;
 
 using haxe.macro.Context;
 using haxe.macro.Tools;
+using hex.error.Error;
 
 /**
  * ...
@@ -24,7 +25,7 @@ class CommandTriggerBuilder
 {
 	public static inline var MapAnnotation = "Map";
 	
-	/** @private */ function new() throw new hex.error.PrivateConstructorException( "This class can't be instantiated." );
+	/** @private */ function new() throw new PrivateConstructorException();
 	
 	macro static public function build() : Array<Field> 
 	{
